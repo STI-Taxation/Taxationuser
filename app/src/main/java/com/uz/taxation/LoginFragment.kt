@@ -127,7 +127,7 @@ class LoginFragment : Fragment() {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
 
-            val intent = Intent(activity, AdminActivity::class.java)
+            val intent = Intent(activity, UserActivity::class.java)
             startActivity(intent)
 
         } else {

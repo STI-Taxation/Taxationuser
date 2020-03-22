@@ -1,7 +1,5 @@
 package com.uz.taxation
 
-import android.content.Context
-import android.content.Intent
 import android.os.Bundle
 import android.text.TextUtils
 import android.util.Log
@@ -18,7 +16,7 @@ import kotlinx.android.synthetic.main.activity_register.*
 
 class RegisterFragment : Fragment() {
 
-    val TAG = "RegisterFragment"
+    private val TAG = "RegisterFragment"
 
     //Connection to Firebase
     private lateinit var mDatabase: DatabaseReference
@@ -35,36 +33,27 @@ class RegisterFragment : Fragment() {
         return inflater.inflate(R.layout.activity_register, container, false)
     }
 
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-    }
-
-    override fun onActivityCreated(savedInstanceState: Bundle?) {
-        super.onActivityCreated(savedInstanceState)
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
         //variables that connects to firebase
         database = FirebaseDatabase.getInstance()
-        mDatabase = database!!.reference!!.child("Users")
+        mDatabase = database.reference.child("Users")
         auth = FirebaseAuth.getInstance()
 
-        btn_register.setOnClickListener({
+        btn_register.setOnClickListener {
 
             val email = reg_Email.text.toString()
             val password = reg_Pass.text.toString()
             createAccount(email, password)
-        })
+        }
 
         //If user click Login Button
-        txt_login.setOnClickListener({
+        txt_login.setOnClickListener {
 
             //Will Show the login layout
             showLogin()
-        })
+        }
 
     }
 
@@ -79,16 +68,19 @@ class RegisterFragment : Fragment() {
             auth.createUserWithEmailAndPassword(email, password)
                 .addOnCompleteListener(it) { task ->
                     if (task.isSuccessful) {
-                        // Sign in success, update UI with the signed-in user's information
+                        // Register success, update UI with the signed-in user's information
                         Log.d(TAG, "createUserWithEmail:success")
-                        val userId = auth!!.currentUser!!.uid
-                        val currentUserDb = mDatabase!!.child(userId)
+                        val userId = auth.currentUser!!.uid
+                        val currentUserDb = mDatabase.child(userId)
                         currentUserDb.child("firstName").setValue(reg_FIrstName.text.toString())
                         currentUserDb.child("lastName").setValue(reg_LastName.text.toString())
                         val user = auth.currentUser
+                        //If register success, display a message to the user
+                        Toast.makeText(context, "Registration Success.",
+                            Toast.LENGTH_SHORT).show()
                         updateUI(user)
                     } else {
-                        // If sign in fails, display a message to the user.
+                        // If register fails, display a message to the user.
                         Toast.makeText(context, "Authentication failed.",
                             Toast.LENGTH_SHORT).show()
                     }
@@ -120,14 +112,18 @@ class RegisterFragment : Fragment() {
         }
 
         val confirmPassword = reg_ConfirmPass.text.toString()
-        if (TextUtils.isEmpty(confirmPassword)) {
-            reg_ConfirmPass.error = "Required."
-            valid = false
-        }else if(password != confirmPassword){
-            reg_ConfirmPass.error = "Password not Match."
-            valid = false
-        } else {
-            reg_ConfirmPass.error = null
+        when {
+            TextUtils.isEmpty(confirmPassword) -> {
+                reg_ConfirmPass.error = "Required."
+                valid = false
+            }
+            password != confirmPassword -> {
+                reg_ConfirmPass.error = "Password not Match."
+                valid = false
+            }
+            else -> {
+                reg_ConfirmPass.error = null
+            }
         }
 
         val fName = reg_FIrstName.text.toString()
@@ -152,15 +148,11 @@ class RegisterFragment : Fragment() {
     private fun updateUI(user: FirebaseUser?) {
         if (user != null) {
 
-            val intent = Intent(activity, AdminActivity::class.java)
-            startActivity(intent)
-
-        } else {
-
+            showLogin()
         }
     }
     //function to show Login layout
-    fun showLogin(){
+    private fun showLogin(){
         val transaction = activity!!.supportFragmentManager.beginTransaction()
         val fragment = LoginFragment()
         transaction.replace(R.id.container, fragment)

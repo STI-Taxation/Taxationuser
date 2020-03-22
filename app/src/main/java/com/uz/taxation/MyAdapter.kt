@@ -6,9 +6,13 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
+import com.uz.taxation.models.Model
 import kotlinx.android.synthetic.main.row.view.*
 
-class MyAdapter (val arrayList: ArrayList<Model>,val context: Context):
+class MyAdapter (val arrayList: ArrayList<
+
+
+        Model>, val context: Context):
     RecyclerView.Adapter<MyAdapter.ViewHolder>() {
     class ViewHolder(itemView:View) : RecyclerView.ViewHolder(itemView){
         fun bindItems(model: Model){
@@ -33,19 +37,19 @@ class MyAdapter (val arrayList: ArrayList<Model>,val context: Context):
 
         holder.itemView.setOnClickListener{
             if (position==0){
-                Toast.makeText(context,"Application",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Item "+itemCount,Toast.LENGTH_SHORT).show()
             }
             if (position==1){
-                Toast.makeText(context,"Application",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Item 2",Toast.LENGTH_SHORT).show()
             }
             if (position==2){
-                Toast.makeText(context,"Application",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Item 3",Toast.LENGTH_SHORT).show()
             }
             if (position==3){
-                Toast.makeText(context,"Application",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Item 4",Toast.LENGTH_SHORT).show()
             }
             if (position==4){
-                Toast.makeText(context,"Application",Toast.LENGTH_SHORT).show()
+                Toast.makeText(context,"Item 5",Toast.LENGTH_SHORT).show()
             }
         }
 

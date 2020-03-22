@@ -3,16 +3,18 @@ package com.uz.taxation
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
 import com.google.firebase.database.DatabaseReference
-import com.google.firebase.database.FirebaseDatabase
 import kotlinx.android.synthetic.main.activity_admin.*
+import kotlinx.android.synthetic.main.activity_user.*
 
 class AdminActivity : AppCompatActivity() {
-    lateinit var mRecyclerView: RecyclerView
-    lateinit var mDatabase:DatabaseReference
+    val rc: RecyclerView?=null
+
+
     val TAG = "AdminActivity"
 
     //Connection to Firebase
@@ -23,8 +25,23 @@ class AdminActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_admin)
 
+        val arrayList = ArrayList<AdminModel>()
 
-        logout.setOnClickListener({
+        arrayList.add(AdminModel("Application List","Description",R.drawable.building1))
+        arrayList.add(AdminModel("Application List","Description",R.drawable.building2))
+        arrayList.add(AdminModel("Application List","Description",R.drawable.building3))
+        arrayList.add(AdminModel("Application List","Description",R.drawable.building4))
+        arrayList.add(AdminModel("Application List","Description",R.drawable.building5))
+
+
+        val myAdminAdapter = MyAdminAdapter(arrayList,this)
+
+        recyclerView.layoutManager = LinearLayoutManager(this)
+        recyclerView.adapter = myAdminAdapter
+
+
+
+        admin_logout.setOnClickListener({
             signOut()
         })
     }
@@ -44,6 +61,5 @@ class AdminActivity : AppCompatActivity() {
 
         }
     }
-
 
 }
