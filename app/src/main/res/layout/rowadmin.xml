@@ -40,7 +40,7 @@
             android:layout_toEndOf="@id/imageadmin"
             android:layout_marginLeft="10dp"
             android:layout_marginTop="5dp"
-            android:layout_below="@+id/title"/>
+            android:layout_below="@+id/tvtitle"/>
 
     </RelativeLayout>
 </androidx.cardview.widget.CardView>

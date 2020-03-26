@@ -1,6 +1,7 @@
 package com.uz.taxation
 
 import android.content.Context
+import android.content.Intent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -35,31 +36,19 @@ class MyAdminAdapter(val arrayList: ArrayList<AdminModel>,val context:Context) :
 
 
         holder.itemView.setOnClickListener{
-            if(position==0){
-                Toast.makeText(
-                    context,"You Clicked",Toast.LENGTH_LONG
-                ).show()
-            }
-            if(position==0){
-                Toast.makeText(
-                    context,"You Clicked",Toast.LENGTH_LONG
-                ).show()
-            }
-            if(position==2){
-                Toast.makeText(
-                    context,"You Clicked",Toast.LENGTH_LONG
-                ).show()
-            }
-            if(position==3){
-                Toast.makeText(
-                    context,"You Clicked",Toast.LENGTH_LONG
-                ).show()
-            }
-            if(position==4){
-                Toast.makeText(
-                    context,"You Clicked",Toast.LENGTH_LONG
-                ).show()
-            }
+            val model = arrayList.get(position)
+            var gTitle :String = model.tvtitle
+            var gDescription:String = model.tvdesc
+
+            var gImageView: Int = model.imageadmin
+
+            val intent = Intent(context,AdminView::class.java)
+
+            intent.putExtra("iTitle",gTitle)
+            intent.putExtra("iDescription",gDescription)
+            intent.putExtra("iImageView",gImageView)
+
+            context.startActivity(intent)
         }
 
     }

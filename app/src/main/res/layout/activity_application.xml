@@ -54,7 +54,7 @@
                 android:layout_gravity="center"
                 android:text="Name"
                 android:textColor="@android:color/black"
-                android:textSize="30sp"
+                android:textSize="20sp"
                 android:textStyle="bold" />
             <TextView
                 android:layout_width="match_parent"
@@ -65,12 +65,13 @@
                 android:textColor="#3C3C3C"
                 android:textSize="18sp"
                 android:textStyle="bold" />
+
             <TextView
-                android:layout_width="match_parent"
+                android:layout_width="238dp"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:text="Municipality"
                 android:layout_marginLeft="25dp"
+                android:text="Municipality"
                 android:textColor="#3C3C3C"
                 android:textSize="18sp"
                 android:textStyle="bold" />
@@ -223,6 +224,7 @@
 
 
             </LinearLayout>
+
         </ScrollView>
 
 

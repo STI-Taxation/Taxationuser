@@ -15,6 +15,6 @@ public class MyAdminHolder extends RecyclerView.ViewHolder {
 
         this.imageadmin = itemView.findViewById(R.id.imageadmin);
         this.mTitle = itemView.findViewById(R.id.title);
-        this.mDesc = itemView.findViewById(R.id.desc);
+        this.mDesc = itemView.findViewById(R.id.tvdesc);
     }
 }

@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".AdminView"
+    android:padding="16dp"
+    android:gravity="center"
+    android:background="@color/whiteColor">
+
+    <ImageView
+        android:id="@+id/admingimageview"
+        android:layout_width="400dp"
+        android:layout_height="400dp"
+        android:src="@drawable/building1"/>
+
+    <TextView
+        android:id="@+id/a_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="BUILDING INFORMATION"
+        android:textColor="@color/blackColor"
+        android:textSize="22sp"
+        android:textStyle="bold"
+        android:layout_below="@id/admingimageview"
+        android:gravity="center"/>
+
+    <TextView
+        android:id="@+id/location"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/a_title"
+        android:text="Location"
+        android:textColor="@color/lighGrayColor"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/strno"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/location"
+        android:text="Str/No"
+        android:textColor="@color/lighGrayColor"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/owner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Owner"
+        android:textColor="@color/lighGrayColor"
+        android:textSize="18sp"
+        android:layout_below="@id/strno"/>
+
+    <TextView
+        android:id="@+id/area"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/owner"
+        android:text="Area"
+        android:textColor="@color/lighGrayColor"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/type"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/area"
+        android:text="Type"
+        android:textColor="@color/lighGrayColor"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/datecons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Title"
+        android:textColor="@color/lighGrayColor"
+        android:textSize="18sp"
+        android:layout_below="@id/type"/>
+
+    <TextView
+        android:id="@+id/classification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/datecons"
+        android:text="Classification"
+        android:textColor="@color/lighGrayColor"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/market"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/classification"
+        android:text="Market"
+        android:textColor="@color/lighGrayColor"
+        android:textSize="18sp"/>
+    <TextView
+        android:id="@+id/asses"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/market"
+        android:text="Assesed"
+        android:textColor="@color/lighGrayColor"
+        android:textSize="18sp"/>
+    <Button
+        android:id="@+id/approve"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="100dp"
+        android:layout_marginTop="15dp"
+        android:layout_marginRight="100dp"
+        android:background="@drawable/btn_filter"
+        android:text="Approve"
+        android:textColor="@android:color/white"
+        android:layout_below="@+id/asses"/>
+
+
+</RelativeLayout>
